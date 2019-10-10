@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { IssueService } from './issue.service';
 
 import { RouterModule, Routes } from '@angular/router';
 import { MatToolbarModule } from '@angular/material';
@@ -30,9 +33,10 @@ const routes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClient
   ],
-  providers: [],
+  providers: [IssueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
