@@ -21,8 +21,10 @@ connection.once('open', () => {
 
 router.route('/issues').get((req, res) => {
     Issue.find((err, issues) => {
-        if (err)
+        if (err) {
             console.log(err);
+            res.status(400).send('Failed to retrieve issues');
+        }
         else
             res.json(issues);
     });
@@ -30,8 +32,10 @@ router.route('/issues').get((req, res) => {
 
 router.route('/issues/:id').get((req, res) => {
     Issue.findById(req.params.id, (err, issue) => {
-        if (err)
+        if (err) {
             console.log(err);
+            res.status(400).send('Could not find issue ' + req.params.id + "\n\n" + err) ;
+        }
         else
             res.json(issue);
     });
